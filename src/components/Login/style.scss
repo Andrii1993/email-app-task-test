@@ -1,0 +1,60 @@
+.form__container {
+    border: 1px solid rgba(240, 236, 220, 0.541);
+    background-color: rgba(240, 236, 220, 0.541);
+    border-radius: 15px;
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-top: 30px;
+}
+
+.form__container Form, .form__title {
+    align-items: center;
+    text-align: center;
+}
+
+.registration__section-input {
+    width: 75%;
+    border: 1px solid #EDE8E7;
+    border-radius: 15px;
+    padding: 15px;
+    font-family: blue;
+}
+
+.registration__show-hide{
+    display: flex;
+    align-items: center;
+  label {
+    width: 100%;
+    position: relative;
+  }
+  &__icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 65%;
+    left: 80%;
+    cursor: pointer;
+  }
+}
+
+.from__btn {
+    margin: 30px 0;
+}
+
+h3 {
+  color: blue;
+  font-weight: 700;
+  &:hover {
+    color: blueviolet;
+  }
+}
+
+.error__message {
+  color: red;
+  font-weight: 700;
+}
+
+.form__register {
+  margin-left: -135px;
+  margin-bottom: 30px;
+}

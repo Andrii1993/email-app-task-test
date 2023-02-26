@@ -1,0 +1,32 @@
+body {
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  .global {
+    margin: 0;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    list-style-type: none;
+  }
+
+  .app {
+    // background-image: url(./components/MainPage/img/background-1.gif);
+    height: 100%;
+  }

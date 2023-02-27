@@ -4,13 +4,14 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from '@material-ui/icons';
 import Pagination from '@mui/material/Pagination';
 import { ENDPOINT_API } from "../../config/API";
+import { BASIC_API } from '../../config/API';
 const EmailTable = () => {
   const [emails, setEmails] = useState([]);
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    axios.get(`${ENDPOINT_API}emails/?page=${page}`, { withCredentials: true })
+    axios.get(`${BASIC_API}emails/?page=${page}`, { withCredentials: true })
       .then(response => {
         setEmails(response.data.results.filter(email => email.sender === 'current_user'));
         setCount(response.data.count);

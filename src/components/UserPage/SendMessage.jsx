@@ -5,7 +5,6 @@ import './style.scss'
 import 'draft-js/dist/Draft.css';
 import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { BASIC_API } from "../../config/API";
-import { ENDPOINT_API } from '../../config/API';
 
 const SendMessage = () => {
   const [open, setOpen] = useState(false);
@@ -15,9 +14,9 @@ const SendMessage = () => {
   const [sender, setSender] = useState(''); 
 
   useEffect(() => {
-    axios.get(`${BASIC_API}/users`)
+    axios.get(`${BASIC_API}users/current/`)
       .then(res => {
-        setSender(res.data.data.email); // Отримуємо email поточного корстувача та записуємо його у в стан sender
+        setSender(res.data.email); // Отримуємо email поточного корстувача та записуємо його у в стан sender
       })
       .catch(err => console.log(err));
   }, []);
@@ -39,7 +38,7 @@ const SendMessage = () => {
       subject: subject,
       text: JSON.stringify(content),
     };
-    axios.post(`${ENDPOINT_API}emails`, email)
+    axios.post(`${BASIC_API}emails/`, email)
       .then(res => {
         console.log(res.data);
         const content = JSON.parse(res.data.data.text);
@@ -120,7 +119,7 @@ const SendMessage = () => {
               <Button onClick={handleClose} color="primary">
                 Відміна
               </Button>
-              <Button type="submit" color="primary">
+              <Button type="submit" color="primary" onClick={handleClose}>
                 Відправити
               </Button>
             </DialogActions>

@@ -5,6 +5,7 @@ import './style.scss'
 import 'draft-js/dist/Draft.css';
 import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { BASIC_API } from "../../config/API";
+import { ENDPOINT_API } from '../../config/API';
 
 const SendMessage = () => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ const SendMessage = () => {
   const [sender, setSender] = useState(''); 
 
   useEffect(() => {
-    axios.get(`${BASIC_API}api/v1/auth/user`)
+    axios.get(`${BASIC_API}/users`)
       .then(res => {
         setSender(res.data.data.email); // Отримуємо email поточного корстувача та записуємо його у в стан sender
       })
@@ -38,7 +39,7 @@ const SendMessage = () => {
       subject: subject,
       text: JSON.stringify(content),
     };
-    axios.post(`${BASIC_API}api/v1/emails/`, email)
+    axios.post(`${ENDPOINT_API}emails`, email)
       .then(res => {
         console.log(res.data);
         const content = JSON.parse(res.data.data.text);
